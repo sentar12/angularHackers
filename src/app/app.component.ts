@@ -10,8 +10,8 @@ export class AppComponent {
   todos = [];
 
   addTodo (todo: string) {
-    this.todos.push(todo);
-    console.log(this.todos)
+    const newtodo = {name: todo, iscompleted: false};
+    this.todos.push(newtodo);
   }
 
 }
