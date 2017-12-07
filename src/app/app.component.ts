@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-todo',
@@ -7,7 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  todos = [];
+  todos:any = [];
+  url: any = 'http://localhost:3050/todos';
+
+
+  constructor(private http: HttpClient) {
+    http.get(this.url).subscribe((result) => {
+      console.log(result)
+      this.todos = result;
+    });
+  };
+
+
 
   addTodo (todo: string) {
     const newtodo = {name: todo, iscompleted: false};

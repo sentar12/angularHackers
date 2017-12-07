@@ -12,7 +12,7 @@ next();
 });
 
 // routes
-server.get('users/', routes.getAllUsers);
+server.get('/todos', routes.getAllTodos);
 
 server.listen(3050, '127.0.0.1', () => {
   console.log(

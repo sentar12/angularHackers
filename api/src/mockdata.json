@@ -1,31 +1,26 @@
 {
-  "users": [
+  "todos": [
     {
       "id": 1,
-      "firstName": "Steven",
-      "lastName": "Rogers",
-      "email": "steven.rogers909@gmail.com",
-      "mobile": "222-222-2222"
+      "name": "todo 1",
+      "isCompleted": false
     },
     {
-      "id": 1,
-      "firstName": "Paridhi",
-      "lastName": "Dixit",
-      "email": "paridhi.dixit@thomsonreuters.com",
-      "mobile": "222-333-4444"
-    },
-    {
-      "id": 1,
-      "firstName": "Michael",
-      "lastName": "Jordan",
-      "email": "mike.jordan@gmail.com",
-      "mobile": "888-898-2222"
+      "id": 2,
+      "name": "todo 2",
+      "isCompleted": false
     },{
-      "id": 1,
-      "firstName": "Vikas",
-      "lastName": "ReallyLongLastName",
-      "email": "vikas@gmail.com",
-      "mobile": "222-222-2222"
+      "id": 3,
+      "name": "todo 3",
+      "isCompleted": false
+    },{
+      "id": 4,
+      "name": "todo 4",
+      "isCompleted": false
+    },{
+      "id": 5,
+      "name": "todo 5",
+      "isCompleted": false
     }
   ]
 }
