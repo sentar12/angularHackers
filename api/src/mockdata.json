@@ -1,12 +1,10 @@
 {
   "todos": [
     {
-      "id": 1,
       "name": "todo 1",
       "isCompleted": false
     },
     {
-      "id": 2,
       "name": "todo 2",
       "isCompleted": false
     }

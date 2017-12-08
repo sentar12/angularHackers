@@ -1,14 +1,8 @@
-<div class="todo-container">
-  
-
-  <h1>Todos</h1>
-  <input type="text" name="add-todo" #todo (keyup.enter)="addTodo(todo.value); todo.value=''"/>
-  <ul>
-    <li *ngFor="let todo of todos" itemid="">
-      <input type="checkbox" /> {{todo.name}}
-    </li>
-  </ul>
-
-  <app-todo-list></app-todo-list>
-
+<div class="todoapp">
+  <h1>{{title}}</h1>
+  <input type="text" class="new-todo"
+    name="add-todo" #todo
+    (keyup.enter)="addTodo(todo.value); todo.value=''"
+    placeholder="What needs to be done?"/>
+  <app-todo-list [todos]="todos"></app-todo-list>
 </div>
