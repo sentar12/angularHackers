@@ -1,11 +1,11 @@
 <ul class="todo-list">
-  <li *ngFor="let todo of todos"
-      class="todo-completed"
-      [ngClass]="{'completed': todo.isCompleted}">
-    <input type="checkbox" [(ngModel)]="todo.isCompleted" class="toggle"/>
+  <li *ngFor="let todo of todos" class="todo-completed" [ngClass]="{'completed': todo.isCompleted}">
+    <input type="checkbox" [(ngModel)]="todo.isCompleted" (change)="updateTodo(todo)" class="toggle" />
     <label>{{todo.name}}</label>
+    <button (click)="removeTodo(todo._id)" class="destroy"></button>
   </li>
 </ul>
 <footer class="footer">
-  <span class="todo-count"><strong>{{todos | todofilter:false}}</strong> items left</span>
+  <span class="todo-count">
+    <strong>{{todos | todofilter:false}}</strong> items left</span>
 </footer>

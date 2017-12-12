@@ -1,23 +1,59 @@
 const mockData = require('../src/mockdata.json');
-const mongojs = require('mongojs')
-
+const mongojs = require('mongojs');
 const db = mongojs('TodoDataBase', ['TodoCollection']);
 
-const svc = {};
+const todos = {};
 
-svc.getAllTodos = (req, res, next) => {
+todos.getAllTodos = (req, res, next) => {
   db.TodoCollection.find(function (err, docs) {
-    res.json(200, docs);    
+    res.json(200, docs);
     next();
-  }) 
+  });
 };
 
-svc.addTodo = (req, res, next) => {
-  console.log(req);
-  db.TodoCollection.find(function (err, docs) {
-    res.json(200, docs);    
+todos.addTodo = (req, res, next) => {
+  db.TodoCollection.insert(req.body, function (err, doc) {
+    console.log(doc);
+    res.json(200, doc);
     next();
-  }) 
+  });
 };
 
-module.exports = svc;
+todos.updateTodo = (req, res, next) => {
+  if (!req.body || !req.params.id) {
+    res.send(404, 'A user object is required.');
+    return next();
+  }
+  console.log(req.params);
+  db.TodoCollection.findAndModify({
+    'query': { '_id': mongojs.ObjectId(req.params.id) },
+    'update': { '$set': req.body }
+  }, err => {
+    if (err) {
+      res.send(503, err);
+    } else {
+      res.send(200);
+    }
+  });
+
+  return next();
+};
+
+todos.removeTodo = (req, res, next) => {
+  if (!req.params.id) {
+    res.send(404, 'An id is required.');
+    return next();
+  }
+
+  db.TodoCollection.remove({ '_id': mongojs.ObjectId(req.params.id) }, true, (err) => {
+    if (err) {
+      res.send(503, err);
+    } else {
+      res.send(200);
+    }
+
+    return next();
+  });
+};
+
+module.exports = todos;

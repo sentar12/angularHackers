@@ -6,19 +6,21 @@ import { FormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { MyFilterPipe } from './filters/filter-todos';
+import { ToDoService } from './services/to-do.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    MyFilterPipe
+    MyFilterPipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [MyFilterPipe],
+  providers: [MyFilterPipe,ToDoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
