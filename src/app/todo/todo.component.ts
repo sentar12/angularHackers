@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class TodoComponent implements OnInit {
 
   constructor() { }
+	export class todoItem = {
+  		description: string,
+  		completed: boolean
+  	}
 
   ngOnInit() {
+  		
   }
+
 
 }
