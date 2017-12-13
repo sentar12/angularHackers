@@ -7,7 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   
 export class MyFilterPipe implements PipeTransform {  
     transform(items: any[], filter: boolean): any {
-        console.log(items)
         if (!items) {  
             return items.length;  
         }  

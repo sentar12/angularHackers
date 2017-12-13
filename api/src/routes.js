@@ -24,15 +24,15 @@ todos.updateTodo = (req, res, next) => {
     res.send(404, 'A user object is required.');
     return next();
   }
-  console.log(req.params);
+  console.log(req.body);
   db.TodoCollection.findAndModify({
     'query': { '_id': mongojs.ObjectId(req.params.id) },
     'update': { '$set': req.body }
-  }, err => {
+  }, function (err, doc) {
     if (err) {
       res.send(503, err);
     } else {
-      res.send(200);
+      res.send(200, doc);
     }
   });
 
@@ -45,15 +45,14 @@ todos.removeTodo = (req, res, next) => {
     return next();
   }
 
-  db.TodoCollection.remove({ '_id': mongojs.ObjectId(req.params.id) }, true, (err) => {
+  db.TodoCollection.remove({ '_id': mongojs.ObjectId(req.params.id) }, true, function (err, doc) {
     if (err) {
       res.send(503, err);
     } else {
-      res.send(200);
+      res.send(200, doc);
     }
-
-    return next();
   });
-};
 
+  return next();
+}
 module.exports = todos;

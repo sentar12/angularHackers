@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ToDoService {
-  host: string = "http://127.0.0.1:3050";
+  host: string = "";
 
   constructor(private _http: HttpClient) {
 
@@ -32,11 +32,15 @@ export class ToDoService {
   }
 
   update(todo): Observable<Todo> {
-    let _url = this.host + "/updateTodo/" + todo._id;
-    delete todo._id;
+    let todoCopy = Object.assign({}, todo);
 
-    return this._http.put(_url, todo)
+    let _url = this.host + "/updateTodo/" + todo._id;
+    delete todoCopy._id;
+    
+    return this._http.put(_url, todoCopy)
       .map((result: Response) => {
+        console.log('line 42');
+        console.log(result);
         return result;
       })
       .catch(this.handleError);

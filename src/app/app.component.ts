@@ -21,7 +21,6 @@ export class AppComponent implements OnInit{
 
   loadTodos () {
     this.todoService.getAll().subscribe((result) => {
-      console.log(result)
       this.todos = result;
     }); 
   }
@@ -29,7 +28,6 @@ export class AppComponent implements OnInit{
   addTodo (todo: string) {
     const newtodo = {name: todo, isCompleted: false};
     this.todoService.add(newtodo).subscribe((result) => {
-      console.log(result)
       this.loadTodos();
     });
   }

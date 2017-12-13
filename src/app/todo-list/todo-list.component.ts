@@ -20,17 +20,13 @@ export class TodoListComponent implements OnInit {
   }
 
   updateTodo (todo: Todo) {
-    console.log(todo)
     this.todoService.update(todo).subscribe((result) => {
-      console.log(result)
-      //this.loadTodos();
     });
   }
 
   removeTodo(id: string) {
     this.http.delete(this.removeUrl + "/" + id).subscribe((result) => {
       console.log(result)
-      //this.loadTodos();
     });
   }
 }
