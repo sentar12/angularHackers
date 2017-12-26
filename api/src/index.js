@@ -9,6 +9,9 @@ server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser({ mapParams: true }));
 server.use(restify.plugins.fullResponse());
 
+//server.use(restify.fullResponse())
+
+
 // routes
 server.get('/todos', routes.getAllTodos);
 server.post('/addTodo', routes.addTodo);

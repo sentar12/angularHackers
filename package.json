@@ -1,10 +1,10 @@
 {
-  "name": "hello-world",
-  "version": "0.0.0",
+  "name": "todo-app",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve --proxy-config proxy.conf.json --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

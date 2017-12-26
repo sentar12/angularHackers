@@ -10,7 +10,7 @@ import { ToDoService } from '../services/to-do.service';
 })
 export class TodoListComponent implements OnInit {
   @Input() todos;
-  removeUrl: any = 'http://localhost:3050/removeTodo';
+  removeUrl: any = '/removeTodo';
 
   constructor(private http: HttpClient, private todoService: ToDoService) {
 
